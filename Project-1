@@ -1,0 +1,73 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Student {
+    private String studentName;
+    private int studentId;
+    private int age;
+
+    // Constructor with all parameters
+    public Student(String studentName, int studentId, int age) {
+        this.studentName = studentName;
+        this.studentId = studentId;
+        this.age = age;
+    }
+
+    // Constructor with name and ID (age set to default value)
+    public Student(String studentName, int studentId) {
+        this(studentName, studentId, 0); // Default age is 0
+    }
+
+    // Constructor with only name (ID and age set to default values)
+    public Student(String studentName) {
+        this(studentName, 0, 0); // Default ID and age are 0
+    }
+
+    // Getters and other methods can be added as needed
+}
+
+class Course {
+    private String courseName;
+    private String professorName;
+    private int year;
+    private List<Student> enrolledStudents;
+
+    // Constructor with all parameters
+    public Course(String courseName, String professorName, int year) {
+        this.courseName = courseName;
+        this.professorName = professorName;
+        this.year = year;
+        this.enrolledStudents = new ArrayList<>();
+    }
+
+    // Method to enroll a student in the course
+    public void enrollStudent(Student student) {
+        enrolledStudents.add(student);
+    }
+
+    // Method to display all enrolled students
+    public void displayEnrolledStudents() {
+        System.out.println("Enrolled students in " + courseName + ":");
+        for (Student student : enrolledStudents) {
+            System.out.println(student.toString());
+        }
+    }
+
+    // Getters and other methods can be added as needed
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Example usage
+        Student student1 = new Student("John Doe", 1, 20);
+        Student student2 = new Student("Jane Doe", 2);
+        Student student3 = new Student("Alice Doe");
+
+        Course javaCourse = new Course("Java Programming", "Prof. Smith", 2023);
+        javaCourse.enrollStudent(student1);
+        javaCourse.enrollStudent(student2);
+        javaCourse.enrollStudent(student3);
+
+        javaCourse.displayEnrolledStudents();
+    }
+}
